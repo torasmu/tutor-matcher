@@ -13,7 +13,8 @@ exports.handler = function(event, context, callback) {
         // This function (`page`) will get called for each page of records.
 
         records.forEach(function(record) {
-          console.log(record);
+          console.log("id", record.get("id"));
+          console.log("email", record.get("email"));
           ids.push(record.get("id"));
         });
 
@@ -32,6 +33,6 @@ exports.handler = function(event, context, callback) {
 
   return callback(null, {
     statusCode: 200,
-    body: ids.toString()
+    body: ids
   });
 };
