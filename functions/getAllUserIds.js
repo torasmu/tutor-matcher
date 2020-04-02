@@ -31,9 +31,9 @@ exports.handler = function(event, context, callback) {
       }
     );
 
-    console.log("ids", ids);
+  console.log("ids", ids);
   return callback(null, {
     statusCode: 200,
-    body: ids.toString();
+    body: ids.toString()
   });
 };
