@@ -15,7 +15,7 @@ exports.handler = function(event, context, callback) {
         records.forEach(function(record) {
           console.log("id", record.get("id"));
           console.log("email", record.get("email"));
-          ids.push(record.get("id").toString());
+          ids.push(record.get("id"));
         });
 
         // To fetch the next page of records, call `fetchNextPage`.
