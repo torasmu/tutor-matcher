@@ -15,7 +15,7 @@ exports.handler = function(event, context, callback) {
         records.forEach(function(record) {
           console.log("id", record.get("id"));
           console.log("email", record.get("email"));
-          ids.push(record.get("id"));
+          ids.push(record.get("id").toString());
         });
 
         // To fetch the next page of records, call `fetchNextPage`.
@@ -31,8 +31,9 @@ exports.handler = function(event, context, callback) {
       }
     );
 
+    console.log("ids", ids);
   return callback(null, {
     statusCode: 200,
-    body: ids
+    body: ids.toString();
   });
 };
