@@ -1,7 +1,7 @@
-exports.handler = function(event, context) {
+exports.handler = function(event, context, callback) {
   // your server-side functionality
-  return {
+  return callback(null, {
     statusCode: 200,
     body: "Hello, World"
-  };
+  });
 };
