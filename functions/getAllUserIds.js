@@ -28,12 +28,11 @@ exports.handler = function(event, context, callback) {
           console.error(err);
           return;
         }
+        console.log("ids", ids);
+        return callback(null, {
+          statusCode: 200,
+          body: ids.toString()
+        });
       }
     );
-
-  console.log("ids", ids);
-  return callback(null, {
-    statusCode: 200,
-    body: ids.toString()
-  });
 };
