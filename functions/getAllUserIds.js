@@ -1,20 +1,19 @@
 var Airtable = require("airtable");
-var key = "key4NpGO6wBYyX3Ca";
-var base = new Airtable({ apiKey: key }).base("appVCgPdvws9nVFzV");
+var apiKey = process.env.AIRTABLE_API_KEY;
+var baseId = process.env.AIRTABLE_BASE_ID;
+var table = process.env.AIRTABLE_TABLE_NAME;
+var base = new Airtable({ apiKey: apiKey }).base(baseId);
 exports.handler = function(event, context, callback) {
-  // your server-side functionality
-  base("Table 1")
-    .select({
-      // Selecting the first 3 records in Grid view:
-      maxRecords: 3,
-      view: "Grid view"
-    })
+  // heres the array to store the user ids
+  var ids = [];
+  base(table)
+    .select()
     .eachPage(
       function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
 
         records.forEach(function(record) {
-          console.log("Retrieved", record.get("email"));
+          ids.push(record.get("id"));
         });
 
         // To fetch the next page of records, call `fetchNextPage`.
@@ -32,6 +31,6 @@ exports.handler = function(event, context, callback) {
 
   return callback(null, {
     statusCode: 200,
-    body: "Hello, World"
+    body: ids.toString()
   });
 };
