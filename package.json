@@ -18,5 +18,8 @@
   "homepage": "https://github.com/torasmu/tutor-matcher#readme",
   "devDependencies": {
     "netlify-lambda": "^1.6.3"
+  },
+  "dependencies": {
+    "airtable": "^0.8.1"
   }
 }
