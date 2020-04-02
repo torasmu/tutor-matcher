@@ -1,35 +1,14 @@
-var Airtable = require("airtable");
-var key = "key4NpGO6wBYyX3Ca";
-var base = new Airtable({ apiKey: key }).base("appVCgPdvws9nVFzV");
-
 netlifyIdentity.on("login", user => {
   console.log("login", user);
   // Try to get the airtable api
-  base("Table 1")
-    .select({
-      // Selecting the first 3 records in Grid view:
-      maxRecords: 3,
-      view: "Grid view"
+  fetch(
+    "https://ecstatic-feynman-8d399f.netlify.com/.netlify/functions/getAirtableEntries"
+  )
+    .then(response => {
+      return response.json();
     })
-    .eachPage(
-      function page(records, fetchNextPage) {
-        // This function (`page`) will get called for each page of records.
-
-        records.forEach(function(record) {
-          console.log("Retrieved", record.get("email"));
-        });
-
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.
-        fetchNextPage();
-      },
-      function done(err) {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      }
-    );
+    .then(data => {
+      console.log(data);
+    });
   location.href = "signup.html";
 });
