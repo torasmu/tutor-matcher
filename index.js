@@ -3,7 +3,7 @@ netlifyIdentity.on("login", user => {
   var id = user.get("id");
   // Try to get the airtable api
   fetch(
-    "https://ecstatic-feynman-8d399f.netlify.com/.netlify/functions/getAirtableEntries"
+    "https://ecstatic-feynman-8d399f.netlify.com/.netlify/functions/getAllUserIds"
   )
     .then(response => {
       return response.json();
