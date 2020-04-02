@@ -7,7 +7,7 @@ exports.handler = function(event, context, callback) {
   // heres the array to store the user ids
   var ids = [];
   base(table)
-    .select()
+    .select({ view: "Grid view" })
     .eachPage(
       function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
