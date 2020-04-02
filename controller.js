@@ -10,5 +10,5 @@ netlifyIdentity.on("login", user => {
     .then(data => {
       console.log(data);
     });
-  location.href = "signup.html";
+  // location.href = "signup.html";
 });
