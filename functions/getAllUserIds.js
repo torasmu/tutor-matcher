@@ -25,7 +25,7 @@ exports.handler = function(event, context, callback) {
         console.log("ids", ids);
         return callback(null, {
           statusCode: 200,
-          body: ids
+          body: JSON.stringify(ids)
         });
       }
     );

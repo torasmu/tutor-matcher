@@ -1,10 +1,8 @@
 netlifyIdentity.on("login", user => {
   console.log("login", user);
-  var id = user.get("id");
+  // var id = user.get("id");
   // Try to get the airtable api
-  fetch(
-    "https://ecstatic-feynman-8d399f.netlify.com/.netlify/functions/getAllUserIds"
-  )
+  fetch("https://tutor-matcher.netlify.com/.netlify/functions/getAllUserIds")
     .then(response => {
       return response.json();
     })
