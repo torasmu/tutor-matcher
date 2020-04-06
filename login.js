@@ -1,18 +1,17 @@
+// This code will be executed when the user logs in
 netlifyIdentity.on("login", user => {
-  // Report user that logged in
+  // Print user that logged in
   console.log("current user is ", user);
   console.log("current user id is ", user.id);
-  // Try to get the airtable api
+  // Call the getAllUserIds.js function
   fetch(window.location.origin + "/.netlify/functions/getAllUserIds")
     .then(response => {
+      // Convert the String response to an Array
       return response.json();
     })
-    .then(x => {
-      // Convert JSON string to array of IDs
-      console.log("type of x: ", typeof x);
-      console.log("x: ", x);
-
-      var userHasAlreadyRegistered = x.includes(user.id);
+    .then(arrayOfUserIds => {
+      // Check if our Airtable already has this user's info
+      var userHasAlreadyRegistered = arrayOfUserIds.includes(user.id);
 
       if (userHasAlreadyRegistered) {
         console.log("already registered");
