@@ -6,6 +6,7 @@
       src="https://identity.netlify.com/v1/netlify-identity-widget.js"
     ></script>
     <script type="text/javascript" src="./logout.js"></script>
+    <script type="text/javascript" src="./signup.js"></script>
   </head>
   <body>
     <div data-netlify-identity-menu></div>
@@ -18,11 +19,11 @@
     <center>
       <strong><h1>New User Sign In</h1></strong>
     </center>
-    <form action="/action_page.php">
+    <form id="myForm" action="/action_page.php">
       Your Gender: <br />
-      <input type="radio" name="gender" value="male" checked /> Male <br />
+      <input type="radio" name="gender" value="male" /> Male <br />
       <input type="radio" name="gender" value="female" /> Female <br />
-      <input type="radio" name="gender" value="other" checked /> Other <br />
+      <input type="radio" name="gender" value="other" /> Other <br />
       <br />
       Your Grade: <br />
       <input type="radio" name="grade" value="9th" /> 9th<br />
@@ -40,7 +41,7 @@
     <input
       type="button"
       id="new3"
-      onclick="location.href = './signup2.html'"
+      onclick="signup()"
       value="Make an Account"
     />
   </body>

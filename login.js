@@ -15,6 +15,7 @@ netlifyIdentity.on("login", user => {
 
       if (userHasAlreadyRegistered) {
         console.log("already registered");
+        location.href = "dashboard.html";
       } else {
         console.log("forwarding to signup page");
         location.href = "signup.html";
